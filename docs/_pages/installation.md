@@ -42,7 +42,14 @@ Supported release is ROS-Melodic. It can be easily installed from official Debia
     ```
 <!-- sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 -->
 
-2. Install the official ROS Melodic Debian package
+
+2. Update the repositories
+
+    ```bash
+    sudo apt update
+    ```
+
+3. Install the official ROS Melodic Debian package
 
     ```bash
     sudo apt install ros-melodic-desktop-full
@@ -116,6 +123,11 @@ It contains Gazebo world files and configuration files required for the Academy 
     sudo apt install ros-melodic-jderobot-assets
     ```
 
+3. Install jderobot-gazebo-assets ROS package
+
+    ```bash
+    sudo apt install jderobot-gazebo-assets
+    ```
 
 # Specific infrastructure
 
