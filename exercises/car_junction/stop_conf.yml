@@ -26,13 +26,29 @@ Stop:
     Proxy: "Motors:default -h localhost -p 9999"
     Topic: "/opel/cmd_vel"
     Name: StopMotors
-    maxV: 250
-    maxW: 20
+    maxV: 10
+    maxW: 5
 
   Pose3D:
     Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
     Proxy: "Pose3D:default -h localhost -p 9989"
     Topic: "/opel/odom"
     Name: StopPose3D
+
+  DummyMotors1:
+    Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
+    Proxy: "DummyMotors1:default -h localhost -p 9999"
+    Topic: "/dummy1/cmd_vel"
+    Name: StopDummyMotors1
+    maxV: 10
+    maxW: 5
+
+  DummyMotors2:
+    Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
+    Proxy: "DummyMotors2:default -h localhost -p 9999"
+    Topic: "/dummy2/cmd_vel"
+    Name: StopDummyMotors2
+    maxV: 10
+    maxW: 5
 
   NodeName: Stop
