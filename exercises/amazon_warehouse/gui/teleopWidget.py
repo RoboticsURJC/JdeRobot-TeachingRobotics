@@ -68,9 +68,11 @@ class TeleopWidget(QWidget):
         painter.setPen(pen)
     
         #Centro del widget
+	#English Translation - Center Widget
         painter.translate(QPoint(_width/2, _height/2))
     
         #eje
+	#English Translation - Axis
         painter.drawLine(QPointF(-_width, 0),
                 QPointF( _width, 0))
     
@@ -78,10 +80,12 @@ class TeleopWidget(QWidget):
                 QPointF(0, _height))
     
         #con el raton
+	#English translation - with the mouse
         pen = QtGui.QPen(Qt.red, width)
         painter.setPen(pen)
 
         #Comprobamos que el raton este dentro de los limites
+	#English Translation - We check that the mouse is within the limits
         if abs(self.line.x()*2) >= self.size().width():
             if self.line.x()>=0:
                 self.line.setX(self.size().width()/2)
