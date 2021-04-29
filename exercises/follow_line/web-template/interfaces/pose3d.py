@@ -92,25 +92,25 @@ def odometry2Pose3D(odom):
     
 class Pose3d ():
 
-	def __init__(self):
+    def __init__(self):
 
-		self.x = 0 # X coord [meters]
-		self.y = 0 # Y coord [meters]
-		self.z = 0 # Z coord [meters]
-		self.h = 1 # H param
-		self.yaw = 0 #Yaw angle[rads]
-		self.pitch = 0 # Pitch angle[rads]
-		self.roll = 0 # Roll angle[rads]
-		self.q = [0,0,0,0] # Quaternion
-		self.timeStamp = 0 # Time stamp [s]
+        self.x = 0 # X coord [meters]
+        self.y = 0 # Y coord [meters]
+        self.z = 0 # Z coord [meters]
+        self.h = 1 # H param
+        self.yaw = 0 #Yaw angle[rads]
+        self.pitch = 0 # Pitch angle[rads]
+        self.roll = 0 # Roll angle[rads]
+        self.q = [0,0,0,0] # Quaternion
+        self.timeStamp = 0 # Time stamp [s]
 
 
-	def __str__(self):
-		s = "Pose3D: {\n   x: " + str(self.x) + "\n   Y: " + str(self.y)
-		s = s + "\n   Z: " + str(self.z) + "\n   H: " + str(self.h) 
-		s = s + "\n   Yaw: " + str(self.yaw) + "\n   Pitch: " + str(self.pitch) + "\n   Roll: " + str(self.roll)
-		s = s + "\n   quaternion: " + str(self.q) + "\n   timeStamp: " + str(self.timeStamp)  + "\n}"
-		return s 
+    def __str__(self):
+        s = "Pose3D: {\n   x: " + str(self.x) + "\n   Y: " + str(self.y)
+        s = s + "\n   Z: " + str(self.z) + "\n   H: " + str(self.h) 
+        s = s + "\n   Yaw: " + str(self.yaw) + "\n   Pitch: " + str(self.pitch) + "\n   Roll: " + str(self.roll)
+        s = s + "\n   quaternion: " + str(self.q) + "\n   timeStamp: " + str(self.timeStamp)  + "\n}"
+        return s 
 
 
 class ListenerPose3d:

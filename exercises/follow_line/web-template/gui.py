@@ -55,8 +55,8 @@ class GUI:
 
         if(image_to_be_shown_updated == False):
             return payload
-    	
-    	shape = image.shape
+        
+        shape = image.shape
         frame = cv2.imencode('.JPEG', image)[1]
         encoded_image = base64.b64encode(frame)
         
@@ -71,10 +71,10 @@ class GUI:
     
     # Function for student to call
     def showImage(self, image):
-    	self.image_show_lock.acquire()
-    	self.image_to_be_shown = image
+        self.image_show_lock.acquire()
+        self.image_to_be_shown = image
         self.image_to_be_shown_updated = True
-    	self.image_show_lock.release()
+        self.image_show_lock.release()
 
     # Function to get the client
     # Called when a new client is received
@@ -110,12 +110,12 @@ class GUI:
         # Payload Map Message
         pos_message = str(self.map.getFormulaCoordinates())
         self.payload["map"] = pos_message
-	
-	# Payload V Message
+    
+    # Payload V Message
         v_message = str(self.hal.motors.data.vx)
         self.payload["v"] = v_message
-	
-	# Payload W Message
+    
+    # Payload W Message
         w_message = str(self.hal.motors.data.az)
         self.payload["w"] = w_message
         
@@ -125,9 +125,9 @@ class GUI:
     # Function to read the message from websocket
     # Gets called when there is an incoming message from the client
     def get_message(self, client, server, message):
-		# Acknowledge Message for GUI Thread
-		if(message[:4] == "#ack"):
-			self.set_acknowledge(True)
+        # Acknowledge Message for GUI Thread
+        if(message[:4] == "#ack"):
+            self.set_acknowledge(True)
 
 
     # Activate the server
@@ -192,8 +192,8 @@ class ThreadGUI:
 
     # The main thread of execution
     def run(self):
-    	while(self.gui.client == None):
-    		pass
+        while(self.gui.client == None):
+            pass
     
         while(True):
             start_time = datetime.now()
@@ -201,8 +201,8 @@ class ThreadGUI:
             acknowledge_message = self.gui.get_acknowledge()
             
             while(acknowledge_message == False):
-            	acknowledge_message = self.gui.get_acknowledge()
-            	
+                acknowledge_message = self.gui.get_acknowledge()
+                
             self.gui.set_acknowledge(False)
             
             finish_time = datetime.now()
