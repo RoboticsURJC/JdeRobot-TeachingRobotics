@@ -61,7 +61,7 @@ Robotics-Academy is an **open source** collection of exercises and challenges to
 There are exercises about drone programming, about computer vision, about mobile robots, about autonomous cars, etc. 
 It is mainly based on [Gazebo simulator](http://gazebosim.org) and [ROS](https://www.ros.org). The students program their solutions in **Python** language.
 
-Each exercise is composed of (a) Gazebo configuration files, (b) a ROS node that is the template to host student's code and (c) theory contents. The student inserts her code in the template file and uses the provided simple API to access to _sensor readings_ and _actuator commands_ (HAL API) and the provided simple API for Graphical User Interface and debugging (GUI API).
+Each exercise is composed of (a) Gazebo configuration files, (b) a ROS node that is the template to host student's code and (c) theory contents. In which student can insert their code in the templete file and uses the provided simple API to access to _sensor readings_ and _actuator commands_ (HAL API) and the provided simple API for Graphical User Interface and debugging (GUI API).
 
 For execution the student launches Gazebo with certain configuration file (specifying the robot and the simulated scenario for that exercise) and launches the ROS node hosting her code.
 
