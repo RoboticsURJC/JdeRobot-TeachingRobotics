@@ -1,0 +1,65 @@
+{
+    "CONFIGURATION": {
+        "POS_X" : 4,
+        "POS_Y" : 8,
+        "ORIENTATION" : 0,
+        "MAX_VEL_V" : 0.75,
+        "MAX_VEL_W" : 0.75,
+        "TOPIC_POSE" : "/robot0/odom",
+        "TOPIC_MOTOR" : "/robot0/cmd_vel",
+        "TOPIC_LASER" : "/robot0/laser_1",
+        "TOPIC_SONAR0": "/robot0/sonar_0",
+        "TOPIC_SONAR1": "/robot0/sonar_1",
+        "TOPIC_SONAR2": "/robot0/sonar_2",
+        "TOPIC_SONAR3": "/robot0/sonar_3",
+        "TOPIC_SONAR4": "/robot0/sonar_4",
+        "TOPIC_SONAR5": "/robot0/sonar_5",
+        "TOPIC_SONAR6": "/robot0/sonar_6",
+        "TOPIC_SONAR7": "/robot0/sonar_7",
+        "SONAR_0": {
+            "POS_X": 0.076,
+            "POS_Y": 0.1,
+            "ORIENTATION" : 1.5708
+        },
+        "SONAR_1":{
+            "POS_X": 0.125,
+            "POS_Y": 0.075,
+            "ORIENTATION" : 0.715585
+        },
+        "SONAR_2":{
+            "POS_X": 0.15,
+            "POS_Y": 0.03,
+            "ORIENTATION" : 0.261799
+        },
+        "SONAR_3":{
+            "POS_X": 0.15,
+            "POS_Y": -0.03,
+            "ORIENTATION" : -0.261799
+        },
+        "SONAR_4":{
+            "POS_X": 0.125,
+            "POS_Y": -0.075,
+            "ORIENTATION" : -0.715585
+        },
+        "SONAR_5":{
+            "POS_X": 0.076,
+            "POS_Y": -0.1,
+            "ORIENTATION" : -1.5708
+        },
+        "SONAR_6":{
+            "POS_X": -0.14,
+            "POS_Y": -0.058,
+            "ORIENTATION" : -2.53073
+        },
+        "SONAR_7":{
+            "POS_X": -0.14,
+            "POS_Y": 0.058,
+            "ORIENTATION" : 2.53073
+        },
+        "LASER":{
+            "POS_X": 0.09,
+            "POS_Y": 0.0,
+            "ORIENTATION" : 0.0
+        }
+    }  
+}

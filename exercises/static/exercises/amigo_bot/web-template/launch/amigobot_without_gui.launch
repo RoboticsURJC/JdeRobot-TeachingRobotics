@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <include file="$(find stdr_robot)/launch/robot_manager.launch"/>
+
+    <node name="stdr_server" pkg="stdr_server" type="stdr_server_node" output="screen" args="$(find stdr_resources)/maps/robocup.yaml"/>
+
+    <node pkg="tf" type="static_transform_publisher" name="world2map" args="0 0 0 0 0 0 world map 100"/>
+    
+    <!-- <include file="$(find stdr_gui)/launch/stdr_gui.launch"/> -->
+
+    <node name="$(anon robot_spawn)" pkg="stdr_robot" type="robot_handler" args="add $(find stdr_resources)/resources/robots/amigobot.xml 4 8 0"/>
+</launch>

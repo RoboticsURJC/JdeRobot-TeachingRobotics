@@ -205,6 +205,7 @@ RUN apt-get update && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --re
 		ros-$ROS_DISTRO-rostest \
 		ros-$ROS_DISTRO-rosunit \
 		ros-$ROS_DISTRO-xacro \
+		ros-$ROS_DISTRO-stdr-simulator \
 	&& geographiclib-get-geoids egm96-5 \
 	&& apt-get -y autoremove \
 	&& apt-get clean autoclean \

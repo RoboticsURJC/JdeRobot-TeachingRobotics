@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<sdf version='1.4'>
+	<world name='Vacuum Cleaner'>
+          <include>
+	        <uri>model://roombaROS</uri>
+            <pose>-1 1.5 0 0 0 0</pose>
+    	  	 <!--<pose>5.04 3.80 0 0 0 -1.57 </pose> Room-->
+    	  	 <!--<pose>5.04 0.00 0 0 0 -1.57 </pose> Bedroom-->
+    	  	 <!--<pose>-2.35 5.44 0 0 0 -1.57 </pose> Living room-->
+             <!--<pose>-3.50 1.45 0 0 0 -1.57 </pose> Dining room-->
+          </include>
+    	<include>
+    	     <uri>model://house_int2</uri>
+             <pose>0 0 0 0 0 0</pose>
+    	</include>
+		<include>
+    	     <uri>model://ground_plane_sincolor</uri>
+    	</include>
+    	
+    	<light name='sun' type='directional'>
+      		<cast_shadows>1</cast_shadows>
+      		<pose>0 0 10 0 -0 0</pose>
+      		<diffuse>0.8 0.8 0.8 1</diffuse>
+      		<specular>0.2 0.2 0.2 1</specular>
+      		<attenuation>
+        		<range>1000</range>
+        		<constant>0.9</constant>
+        		<linear>0.01</linear>
+        		<quadratic>0.001</quadratic>
+      		</attenuation>
+      		<direction>-0.5 0.1 -0.9</direction>
+    	</light>
+    
+		<scene>
+		  	<ambient>0.4 0.4 0.4 1</ambient>
+		  	<background>0.7 0.7 0.7 1</background>
+		  	<shadows>1</shadows>
+		</scene>
+    
+		<gui fullscreen='0'>
+		  <camera name='user_camera'>
+		    <pose>0.126197 6.13852 18.8314 0 1.08764 -2.14299</pose>
+		    <view_controller>orbit</view_controller>
+		  </camera>
+		</gui>
+  </world>
+</sdf>

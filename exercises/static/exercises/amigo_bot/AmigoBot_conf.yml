@@ -1,0 +1,30 @@
+AmigoBot:
+
+  Motors:
+    Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
+    Proxy: "Motors:tcp -h localhost -p 9003"
+    Topic: "/robot0/cmd_vel"
+    Name: AmigoBotMotors
+
+  Pose3D:
+    Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
+    Proxy: "Pose3D:tcp -h localhost -p 9003"
+    Topic: "/robot0/odom"
+    Name: AmigoBotPose3d
+
+  Laser:
+    Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
+    Proxy: "Laser:tcp -h localhost -p 9003"
+    Topic: "/robot0/laser_1"
+    Name: AmigoBotLaser
+
+  Sonar:
+    Server: 2 # 0 -> Deactivate, 1 -> Ice , 2 -> ROS
+    Proxy: "Sonar:tcp -h localhost -p 9003"
+    Topic: "/robot0/sonar_0"
+    Name: AmigoBotSonar_0
+
+  maxV: 0.2
+  maxW: 0.2
+
+  NodeName: AmigoBot
