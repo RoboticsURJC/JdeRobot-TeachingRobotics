@@ -17,7 +17,6 @@ time{
     border: 1px solid lightgray;
     height: 500px;
     width: 95%;
-
 }
 
 .navigation-bar{
@@ -43,14 +42,6 @@ time{
     padding-top: 2px;
 }
 
-
-.btn_img{
-    height: 25px;
-}
-img{
-    height: 25px;
-}
-
 #Control{
     vertical-align:middle;
     text-align:center;  
@@ -62,7 +53,12 @@ img{
     margin: 15px auto; 
     margin-left: 80px; 
 }
-
+.btn_img{
+    height: 25px;
+}
+img{
+    height: 25px;
+}
 
 #submit{
   font-size: 12px;
@@ -70,7 +66,7 @@ img{
     height: 40px;
     border: none;
     background-color: whitesmoke;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 #stop{
@@ -99,6 +95,7 @@ img{
     border: none;
     background-color: whitesmoke;
     margin-right: 50px;
+
 }
 
 #reset{
@@ -109,6 +106,7 @@ img{
     border: none;
     background-color: whitesmoke;
     margin-right: 50px;
+
 }
 
 #gazebo_button{
@@ -138,6 +136,21 @@ img{
     border-image-slice: 1;
 }
 
+/* #gzweb_btn{
+    margin-left: 10%;
+    width: 80px;
+    height: 45px;
+    border:1 solid whitesmoke;
+    background-color: white;
+}
+
+#gzweb_btn:hover{
+    border: 2px solid transparent;
+    -moz-border-image: -moz-linear-gradient(bottom, whitesmoke 0%, #000 100%);
+    -webkit-border-image: -webkit-linear-gradient(bottom, whitesmoke 0%, #000 100%);
+    border-image: linear-gradient(to bottom, whitesmoke 0%,  #000 100%);
+    border-image-slice: 1;
+} */
 #letters{
     margin-top:8px;
     margin-right:10px;
@@ -197,22 +210,6 @@ input[type=number]::-webkit-inner-spin-button {
     margin-right:50px;
 }
 
-#gzweb_btn{
-    margin-left: 10%;
-    width: 80px;
-    height: 45px;
-    border:1 solid whitesmoke;
-    background-color: white;
-}
-
-#gzweb_btn:hover{
-    border: 2px solid transparent;
-    -moz-border-image: -moz-linear-gradient(bottom, whitesmoke 0%, #000 100%);
-    -webkit-border-image: -webkit-linear-gradient(bottom, whitesmoke 0%, #000 100%);
-    border-image: linear-gradient(to bottom, whitesmoke 0%,  #000 100%);
-    border-image-slice: 1;
-}
-
 #console_btn{
     font-size: 10px;
     width: 80px;
@@ -228,6 +225,21 @@ input[type=number]::-webkit-inner-spin-button {
     -moz-border-image: -moz-linear-gradient(bottom, whitesmoke 0%, #000 100%);
     -webkit-border-image: -webkit-linear-gradient(bottom, whitesmoke 0%, #000 100%);
     border-image: linear-gradient(to bottom, whitesmoke 0%,  #000 100%);
+    border-image-slice: 1;
+}
+#mapping_btn{
+    font-size: 10px;
+    width: 80px;
+    height: 45px;
+    border: 2px solid black;
+    background-color: white;
+    margin-left: 10px;
+}
+#mapping_btn:hover{
+    border: 2px solid transparent;
+    -moz-border-image: -moz-linear-gradient(bottom, whitesmoke 0%, #000 100%);
+    -webkit-border-image: -webkit-linear-gradient(bottom, whitesmoke 0%, #000 100%);
+    border-image: linear-gradient(to bottom, whitesmoke 0%, #000 100%);
     border-image-slice: 1;
 }
 
@@ -249,10 +261,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 th, td{
-    padding-left: 0px;
+    padding-left: 10px;
 }
-
-
 #frecuency_control{
   margin-left: 5%;
 }

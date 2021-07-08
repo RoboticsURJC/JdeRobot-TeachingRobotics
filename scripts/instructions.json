@@ -60,7 +60,7 @@
         "instructions_ros": ["python ./RoboticsAcademy/exercises/position_control/web-template/launch/launch.py"],
         "instructions_host": "python /RoboticsAcademy/exercises/position_control/web-template/exercise.py 0.0.0.0"
     },
-    "prueba": {
+    "amigo_bot": {
         "instructions_ros": ["/opt/ros/melodic/bin/roslaunch stdr_launchers server_with_map_and_gui_plus_robot.launch"]
     }
 }

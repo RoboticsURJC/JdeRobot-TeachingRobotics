@@ -1,0 +1,86 @@
+#canvas_container{
+    float: left;
+    width: 50%;
+    height: 500px;
+}
+
+#gui_canvas {
+    height: 350px;
+    width: 400px;
+}
+
+#gzweb{
+    margin-top: 15px;
+    height: 40%;
+    width:100%;
+}
+
+#lap_heading{
+    padding-left: 10%;
+}
+
+#lap_time{
+    padding-left: 10%;
+}
+
+#birds-eye{
+    margin-top: 15px;
+    background: url("./img/robocup.png");
+    background-size: cover;
+    height: 729px;
+    width: 769px;
+}
+
+#mapping{
+    margin-top: 15px;
+    background: #fdffff;
+    background-size: cover;
+    height: 500px;
+    width: 500px;
+}
+
+.popup{
+    position: relative;
+    display: inline-block;
+}
+.popup .popuptext {
+    visibility: hidden;
+    width: 390px;
+    height: 230px;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding:  5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    bottom: 125%;
+    left: 105%;
+    overflow: hidden;
+    margin-left: 20px;
+}
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
