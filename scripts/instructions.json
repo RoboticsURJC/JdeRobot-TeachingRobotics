@@ -59,5 +59,11 @@
         "gazebo_path": "/RoboticsAcademy/exercises/position_control/web-template/launch",
         "instructions_ros": ["python ./RoboticsAcademy/exercises/position_control/web-template/launch/launch.py"],
         "instructions_host": "python /RoboticsAcademy/exercises/position_control/web-template/exercise.py 0.0.0.0"
+    },
+    "optical_flow_teleop": {
+        "gazebo_path": "/RoboticsAcademy/exercises/optical_flow_teleop/web-template/launch",
+        "instructions_ros": ["/opt/ros/melodic/bin/roslaunch ./RoboticsAcademy/exercises/optical_flow_teleop/web-template/launch/simple_line_follower_ros_headless.launch"],
+        "instructions_host": "python /RoboticsAcademy/exercises/optical_flow_teleop/web-template/exercise.py 0.0.0.0",
+        "instructions_gui": "python /RoboticsAcademy/exercises/optical_flow_teleop/web-template/gui.py 0.0.0.0"
     }
 }
