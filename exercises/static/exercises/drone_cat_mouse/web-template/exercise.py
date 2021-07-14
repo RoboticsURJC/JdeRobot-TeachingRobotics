@@ -11,6 +11,7 @@ from datetime import datetime
 import re
 import json
 import importlib
+import numpy as np
 
 import rospy
 from std_srvs.srv import Empty
@@ -34,7 +35,9 @@ class Template:
         self.ideal_cycle = 80
         self.iteration_counter = 0
         self.real_time_factor = 0
-        self.frequency_message = {'brain': '', 'gui': '', 'rtf': ''}
+        self.score = 0
+        self.dist = 0
+        self.frequency_message = {'brain': '', 'gui': '', 'rtf': '', 'score': '', 'dist': ''}
 
         self.server = None
         self.client = None
@@ -229,6 +232,8 @@ class Template:
         self.frequency_message["brain"] = brain_frequency
         self.frequency_message["gui"] = gui_frequency
         self.frequency_message["rtf"] = self.real_time_factor
+        self.frequency_message["score"] = self.score
+        self.frequency_message["dist"] = self.dist
 
         message = "#freq" + json.dumps(self.frequency_message)
         self.server.send_message(self.client, message)
@@ -248,6 +253,42 @@ class Template:
                 stats_list = [x.strip() for x in line.split(',')]
                 self.real_time_factor = stats_list[0]
 
+    # Function to calculate score for evaluation
+    def calc_score(self):
+        point_cnt = 0
+        max_score = 100
+        max_points = 240
+        self.score = 0
+
+        while not self.reload:
+            # Get position of cat drone
+            x1, y1, z1 = self.hal.get_position()
+            # Get position of mouse drone
+            x2, y2, z2 = self.mouse.get_position()
+
+            # Calculate distance between cat and mouse drones
+            self.dist = np.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+            # Rounding upto 2 decimal
+            self.dist = int(self.dist*100)/100
+
+            # Calculate score only when both the drones are in air 
+            # and score is less than maximum score
+            # and raise score upto maximum of 2 mins that is 240 measuring points
+            if z1 > 0.25 and z2 > 0.25 and self.score < max_score and point_cnt <= max_points:
+                # Calculate score
+                if self.dist < 2.0:
+                    self.score = self.score + 0.5
+                elif self.dist >= 2.0 and self.dist < 3.0:
+                    self.score = self.score + 0.25
+                elif self.dist >= 3.0 and self.dist < 4.0:
+                    self.score = self.score + 0.12
+
+                # Rounding upto 2 decimal
+                self.score = int(self.score*100)/100
+
+            point_cnt = point_cnt + 1
+            time.sleep(0.5)
+
     # Function to maintain thread execution
     def execute_thread(self, source_code):
         # Keep checking until the thread is alive
@@ -261,8 +302,10 @@ class Template:
         # New thread execution
         self.measure_thread = threading.Thread(target=self.measure_frequency)
         self.thread = threading.Thread(target=self.process_code, args=[source_code])
+        self.eval_thread = threading.Thread(target=self.calc_score)
         self.thread.start()
         self.measure_thread.start()
+        self.eval_thread.start()
         print("New Thread Started!")
 
     # Function to read and set frequency from incoming message

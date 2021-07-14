@@ -63,3 +63,7 @@ class Mouse:
             self.mouse.set_cmd_vel(vx, vy, vz, yaw)
         else:
             print("[Mouse] Path {} not available".format(path_level))
+
+    def get_position(self):
+        pos = self.mouse.get_position()
+        return pos

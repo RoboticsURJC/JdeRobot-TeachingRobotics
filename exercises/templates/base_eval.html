@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ACE Editor</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="{% static 'exercises/assets/img/logo.ico' %}" sizes="32x32">
+    <link rel="stylesheet" href="{% static '' %}exercises/{{exercise}}/web-template/assets/main.css?v={{SYS_VERSION}}">
+    <link rel="stylesheet" href="{% static '' %}exercises/{{exercise}}/web-template/assets/gui.css?v={{SYS_VERSION}}">
+    <!--<link rel="stylesheet" href="{% static '' %}exercises/{{exercise}}/web-template/assets/console.css">-->
+    <link rel="stylesheet" href="{% static '' %}exercises/{{exercise}}/web-template/assets/split_style.css?v={{SYS_VERSION}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css?v={{SYS_VERSION}}" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+
+</head>
+<body>
+    <!-- Extends base.html to initiate the connection to the RADI -->
+    <iframe id="radiConect" type="text/html" src="{% static 'exercises/assets/base.html' %}" width="100%" height="7%" name="data" frameBorder="0" scrolling="no"></iframe>
+    <script>
+        var radiConect = document.getElementById('radiConect')
+        radiConect.contentWindow.postMessage('message', '*');
+        window.onmessage = function(event){
+            if (event.data == 'start') {
+                try {
+                    startSim();
+                }
+                catch (e) {
+                    if (e instanceof ReferenceError)
+                        radiConect.contentWindow.postMessage('down', '*');
+                }
+            }
+        };
+    </script>
+    <div id="Control" class="container" >
+        <button  id="save" type="button" onclick="saveCodeLocally()"<span title="Save your code in your local machine"></span><img src="{% static 'exercises/assets/img/upload.png' %}"> Save</button>
+        <button  id="load" type="button"<span title="Load your code from your local machine"></span><img src="{% static 'exercises/assets/img/download.png' %}"> Load</button>
+        <button  id="submit" type="button" onclick="submitCode()"<span title="Submit and try out your code"></span><img src="{% static 'exercises/assets/img/submit.png' %}"> Play </button>
+        <button  id="stop" type="button" onclick="stopCode()"<span title="Stop the current simulation"></span><img src="{% static 'exercises/assets/img/pause.png' %}"> Stop</button>
+        <input   type="file" id="real-file" hidden="hidden"/>
+        <button  id="reset" type="button" onclick="resetSim()" <span title="Reset the current simulation"></span><img style="height:15px;" src="{% static 'exercises/assets/img//reset.svg' %}"> Reset</button>
+        <div overflow-x:auto id="Medidor_Brain">
+            <table id=table_code_freq>
+            <tr>
+            <td><a id="letters">Brain Freq:</a> <output id="ideal_code_frequency" style="color:blue">0</output>/ <input type="number" id="code_freq" name="Brain Frequency" min="1" max="30" value="12" step="1" oninput="codefrequencyUpdate(value)"<span title="The brain frequency is the value that tells the robot with what frequency should the code be updated"></span> Hz</td>
+            </tr>
+            </table>
+        </div>
+        <div overflow-x:auto id="Medidor_GUI">
+            <table id=table_gui_freq>
+            <tr>
+                <td><a id="letters">GUI Freq:</a><output id="ideal_gui_frequency" style="color:green">0</output>/ <input type="number" id="gui_freq" name="quantity" min="1" max="30" value="12" step="1" oninput="guifrequencyUpdate(value)"<span title="This value corresponds to the frequency the UI and visuals will be updated."></span> Hz</td>
+            </tr>
+            </table>
+        </div>
+        <div id="Medidor_RTF">
+            <a id="letters">Sim RTF:</a><output id="real_time_factor" style="color:red">0</output><span title="This value is the real time factor of the simulation, it let us know the rate of time in the simulation and real time. As you get closer to 1, the difference between real time and simulation time decreases."></span>
+        </div>
+        <div id="Medidor_Score">
+            <a id="letters">Score:</a><output id="score" style="color:green">0</output><span title="This value is the score of the user. Every user should aim for the higher score."></span>
+        </div>
+        <button id="gazebo_button" type="button" onclick="changegzweb()" <span title="Activate the simulation screen"></span><img id="gzimg" style="height:20px;" src="{% static 'exercises/assets/img//gazebo.svg' %}">Simulation</button>
+        <button id="console_button" type="button" onclick="changeconsole()"><img id="terminalimg" src="{% static 'exercises/assets/img/console.png' %}"> Console</button>
+        <button id="eval_button" type="button" onclick="evaluator()"><img id="evalimg" src="{% static 'exercises/assets/img/eval.png' %}">Evaluate</button>
+    </div>
+    <div class="content">
+        <div class="split a">
+            <li id="frecuency_control" style="list-style: none; display:block; text-align:center; font-weight:bold;" ><div id="Frequency" class="container">
+                <!-- Source http://thenewcode.com/757/Playing-With-The-HTML5-range-Slider-Input -->
+                <!--<table>
+                    <tr>
+                        <strong>
+                            <th>Name</th>
+                            <th>Slider</th>
+                            <th>Measured/Desired</th>
+                        </strong>
+					</tr>
+					<tr>
+						<td>Brain Frequency</td>
+						<td><input type="range" min="1" max="30" value="12.5" id="fader"
+							step="0.1" oninput="codefrequencyUpdate(value)" class="frequency-slider"></td>
+						<td><output id="ideal_code_frequency">0</output> / <output for="number" id="code_frequency">12.5</output> Hz</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>GUI Frequency</td>
+						<td><input type="range" min="1" max="30" value="12" id="fader"
+							step="0.5" oninput="guifrequencyUpdate(value)" class="frequency-slider"></td>
+						<td><output id="ideal_gui_frequency">0</output> / <output for="fader" id="gui_frequency">12.5</output> Hz</td>
+					</tr>
+                    <tr>
+                        {% if not exercise in 'follow_line,drone_cat_mouse,follow_turtlebot,follow_road' %}
+                            <th >Debug-Level</th>
+                            <td ><input  id="slide" type="range" min="1" max="4" steps="1" value="2" name="debug" class="debug-slider">
+                                <ul class="debug-labels">
+                            <th><p id="slidernum">2</p>
+                            <script type="text/javascript">
+                                var slide = document.getElementById('slide'),
+                                    sliderDiv = document.getElementById("slidernum");
+                                slide.onchange = function() {
+                                    sliderDiv.innerHTML = this.value;
+                                }
+                            </script>
+                            </ul>
+                            </td>
+                            </th>
+
+                        {% else %}
+                            <td>RTF</td>
+                            <td/>
+                            <td><output id="real_time_factor">0</output></td>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div></li>
+
+{% block content %} {% endblock %}
+
+</body>
+
+</html>

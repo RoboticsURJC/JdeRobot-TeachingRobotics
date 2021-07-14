@@ -129,7 +129,16 @@ img{
     margin-right: 10px;
 }
 
-#reset:hover, #submit:hover, #load:hover, #stop:hover, #save:hover, #gazebo_button:hover, #console_button:hover{
+#eval_button{
+    font-size: 12px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: whitesmoke;
+    margin-right: 10px;
+}
+
+#reset:hover, #submit:hover, #load:hover, #stop:hover, #save:hover, #gazebo_button:hover, #console_button:hover, #eval_button:hover{
     border: 1.5px solid transparent;
     -moz-border-image: -moz-linear-gradient(left, #3acfd5 0%, #3a4ed5 100%);
     -webkit-border-image: -webkit-linear-gradient(left, #3acfd5 0%, #3a4ed5 100%);
@@ -145,6 +154,12 @@ img{
 }
 
 #real_time_factor{
+    margin-top:8px;
+    width: 20px;
+    height: 40px;
+}
+
+#score{
     margin-top:8px;
     width: 20px;
     height: 40px;
@@ -190,6 +205,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 #Medidor_RTF{
+    width:100px;
+    height:42px;
+    background-color: whitesmoke;
+    margin-right:50px;
+}
+
+#Medidor_Score{
     width:100px;
     height:42px;
     background-color: whitesmoke;
@@ -247,6 +269,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 #visual{
     margin: 2%;
+}
+
+#evalimg {
+    float: left;
+    height: 20px;
+    margin-left: 10px;
 }
 
 #terminalimg {

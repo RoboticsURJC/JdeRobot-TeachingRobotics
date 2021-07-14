@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_eval.html' %}
 
 {% load static %}
 {% block content %}
@@ -15,6 +15,11 @@ while True:
     # Enter iterative code!
         </div>
     </div>
+
+    <!-- Evaluator -->
+    <script src="https://cdn.plot.ly/plotly-2.2.0.min.js"></script>
+    <div id="eval"></div>
+
 </div>
 
 </div>
@@ -82,5 +87,6 @@ while True:
 <script src="{% static 'exercises/drone_cat_mouse/web-template/assets/ws_code.js' %}?v={{SYS_VERSION}}" type="text/javascript" charset="utf-8"></script>
 <script src="{% static 'exercises/drone_cat_mouse/web-template/assets/ws_gui.js' %}?v={{SYS_VERSION}}" type="text/javascript" charset="utf-8"></script>
 <script src="{% static 'exercises/drone_cat_mouse/web-template/assets/local_functions.js' %}?v={{SYS_VERSION}}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'exercises/drone_cat_mouse/web-template/assets/evaluator.js' %}?v={{SYS_VERSION}}" type="text/javascript" charset="utf-8"></script>
 
 {% endblock %}
